@@ -16,7 +16,7 @@ interface NavbarProps {
 const Logo: React.FC<{ scrolled: boolean }> = ({ scrolled }) => (
   <div className="flex items-center gap-3 group">
     <img 
-      src={scrolled ? "/logo.png" : "/logo-white.png"}
+      src="/logo.png"
       alt="Pousada Acauan" 
       className="w-20 h-20 transition-all duration-500"
     />
