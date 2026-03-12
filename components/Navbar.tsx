@@ -14,11 +14,11 @@ interface NavbarProps {
 }
 
 const Logo: React.FC<{ scrolled: boolean }> = ({ scrolled }) => (
-  <div className="flex items-center gap-4 group">
+  <div className="flex items-center gap-3 group">
     <img 
       src="/logo.png" 
       alt="Pousada Acauan" 
-      className={`w-14 h-14 transition-all duration-500 ${scrolled ? '' : 'brightness-0 invert'}`}
+      className={`w-16 h-16 transition-all duration-500 ${scrolled ? '' : 'brightness-0 invert'}`}
     />
     <div className="flex flex-col">
       <span className={`hidden sm:block font-serif text-lg tracking-[0.1em] uppercase leading-none transition-colors duration-500 ${scrolled ? 'text-[#3E3E3E]' : 'text-white'}`}>
