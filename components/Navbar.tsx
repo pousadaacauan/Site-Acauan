@@ -15,37 +15,11 @@ interface NavbarProps {
 
 const Logo: React.FC<{ scrolled: boolean }> = ({ scrolled }) => (
   <div className="flex items-center gap-4 group">
-    <div className="relative">
-      <svg 
-        viewBox="0 0 100 100" 
-        className={`w-14 h-14 transition-all duration-500 ${scrolled ? 'fill-[#7895B2]' : 'fill-white'}`}
-      >
-        {/* Círculo Principal - Tamanho Padrão */}
-        <circle cx="50" cy="50" r="48.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-        
-        {/* Elementos internos do Logo Acauan original */}
-        <circle cx="50" cy="24" r="5" />
-        
-        <path d="M34 66 Q34 38 48 38 M34 66 Q20 55 16 45 M34 66 Q20 66 16 71" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="34" y1="66" x2="34" y2="82" stroke="currentColor" strokeWidth="1.8" />
-        
-        <path d="M66 66 Q66 38 52 38 M66 66 Q80 55 84 45 M66 66 Q80 66 84 71" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="66" y1="66" x2="66" y2="82" stroke="currentColor" strokeWidth="1.8" />
-        
-        <path d="M40 76 Q45 58 58 54 Q63 52 63 49 Q63 46 60 46 Q58 46 58 49 Q54 68 40 76 Z" />
-        <line x1="38" y1="76" x2="62" y2="76" stroke="currentColor" strokeWidth="2" />
-
-        <text 
-          x="50" 
-          y="93" 
-          textAnchor="middle" 
-          fontSize="7.5" 
-          className="font-sans font-bold tracking-[0.35em] uppercase"
-        >
-          ACAUAN
-        </text>
-      </svg>
-    </div>
+    <img 
+      src="/logo.png" 
+      alt="Pousada Acauan" 
+      className={`w-14 h-14 transition-all duration-500 ${scrolled ? '' : 'brightness-0 invert'}`}
+    />
     <div className="flex flex-col">
       <span className={`hidden sm:block font-serif text-lg tracking-[0.1em] uppercase leading-none transition-colors duration-500 ${scrolled ? 'text-[#3E3E3E]' : 'text-white'}`}>
         Pousada
