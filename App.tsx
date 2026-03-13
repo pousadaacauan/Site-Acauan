@@ -19,6 +19,7 @@ import JournalDetail from './components/JournalDetail';
 import CartDrawer from './components/CartDrawer';
 import Checkout from './components/Checkout';
 import GuestArea from './components/GuestArea';
+import BookingWidget from './components/BookingWidget';
 import { Product, JournalArticle, ViewState, Language } from './types';
 
 // URL do sistema de reservas (QloApps)
@@ -29,6 +30,7 @@ function App() {
   const [lang, setLang] = useState<Language>('pt');
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
@@ -140,13 +142,13 @@ function App() {
         onAddToCart={addToCart}
         onCheckout={() => {
             setIsCartOpen(false);
-            // Redireciona para QloApps com os itens selecionados
-            const roomIds = cartItems.map(item => item.id).join(',');
-            const checkoutUrl = roomIds 
-              ? `${QLOAPPS_URL}?rooms=${roomIds}`
-              : QLOAPPS_URL;
-            window.open(checkoutUrl, '_blank');
+            setIsBookingOpen(true);
         }}
+      />
+
+      <BookingWidget 
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
       />
     </div>
   );
