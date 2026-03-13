@@ -59,7 +59,7 @@ const GuestArea: React.FC<{ lang: Language; onBack: () => void }> = ({ lang, onB
             <p className="text-[#7895B2] font-serif italic text-lg mt-2">"Sinta o fluxo, respire a paz." — Gaya</p>
           </div>
           <a 
-            href="https://wa.me/554899999999" 
+            href="https://wa.me/5547996236934" 
             target="_blank" 
             className="bg-[#2C2A26] text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#7895B2] transition-all flex items-center gap-3 shadow-lg"
           >

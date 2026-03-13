@@ -58,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
           <h4 className="font-bold text-[#3E3E3E] mb-10 tracking-[0.3em] text-[10px] uppercase border-b border-[#D6D1C7] pb-4 inline-block">Acesso Hóspede</h4>
           <ul className="space-y-6 font-light text-xs uppercase tracking-[0.2em]">
             <li><button onClick={() => window.scrollTo(0,0)} className="hover:text-[#7895B2] transition-all hover:pl-2">Wi-Fi & Guia</button></li>
-            <li><a href="https://wa.me/554899999999" target="_blank" className="hover:text-[#7895B2] transition-all hover:pl-2">Falar com Anfitrião</a></li>
+            <li><a href="https://wa.me/5547996236934" target="_blank" className="hover:text-[#7895B2] transition-all hover:pl-2">Falar com Anfitrião</a></li>
             <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Restaurantes Parceiros</a></li>
             <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Informações Check-out</a></li>
           </ul>
