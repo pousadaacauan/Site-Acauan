@@ -62,22 +62,15 @@ const BookingWidget: React.FC<BookingWidgetProps> = ({ isOpen, onClose }) => {
   };
 
   const handleConfirmBooking = () => {
-    // Monta mensagem pro WhatsApp com os dados da reserva
-    const nights = calculateNights();
-    const message = encodeURIComponent(
-      `Olá! Gostaria de fazer uma reserva:\n\n` +
-      `🛏️ ${selectedRoom?.name}\n` +
-      `📅 ${formatDate(checkIn)} a ${formatDate(checkOut)} (${nights} noites)\n` +
-      `👥 ${adults} adulto(s), ${children} criança(s)\n` +
-      `💰 Total estimado: R$ ${calculateTotal()}\n\n` +
-      `📋 Dados:\n` +
-      `Nome: ${guestInfo.name}\n` +
-      `Email: ${guestInfo.email}\n` +
-      `Tel: ${guestInfo.phone}`
-    );
+    // Redireciona pro QloApps com as datas selecionadas
+    const checkInFormatted = checkIn; // formato YYYY-MM-DD
+    const checkOutFormatted = checkOut;
     
-    // Abre WhatsApp com a mensagem pronta
-    window.open(`https://wa.me/5547996236934?text=${message}`, '_blank');
+    // URL do QloApps com parâmetros de busca
+    const qloappsUrl = `${QLOAPPS_URL}?date_from=${checkInFormatted}&date_to=${checkOutFormatted}&htl_dtl=1&adult=${adults}&children=${children}`;
+    
+    // Abre QloApps pra finalizar reserva e pagamento
+    window.open(qloappsUrl, '_blank');
     onClose();
   };
 
