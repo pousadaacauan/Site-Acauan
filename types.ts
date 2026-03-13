@@ -1,9 +1,12 @@
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
 */
 
 import React from 'react';
+
+export type Language = 'pt' | 'en' | 'es' | 'de';
 
 export interface Product {
   id: string;
@@ -24,7 +27,7 @@ export interface JournalArticle {
   date: string;
   excerpt: string;
   image: string;
-  content: React.ReactNode; // Allowing JSX for rich formatting/poems
+  content: React.ReactNode; 
 }
 
 export interface ChatMessage {
@@ -44,4 +47,5 @@ export type ViewState =
   | { type: 'home' }
   | { type: 'product', product: Product }
   | { type: 'journal', article: JournalArticle }
-  | { type: 'checkout' };
+  | { type: 'checkout' }
+  | { type: 'guest-area' };

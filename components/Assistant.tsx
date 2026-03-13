@@ -5,21 +5,27 @@
 */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { ChatMessage } from '../types';
+import { ChatMessage, Language } from '../types';
 import { sendMessageToGemini } from '../services/geminiService';
+import { translations } from '../translations';
 
-const Assistant: React.FC = () => {
+const Assistant: React.FC<{ lang: Language }> = ({ lang }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    { 
-      role: 'model', 
-      text: 'Namastê, alma querida! 🙏 Sou a Gaya, a essência vibracional da Pousada Acauan. Estamos situados onde a magia do Rio da Madre abraça o mar da Guarda do Embaú. É uma alegria ter você em nosso fluxo. Como posso ajudar sua energia a encontrar o refúgio perfeito hoje?', 
-      timestamp: Date.now() 
-    }
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isThinking, setIsThinking] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Initialize/Reset message when language changes
+  useEffect(() => {
+    setMessages([
+      { 
+        role: 'model', 
+        text: translations[lang].assistant.initial, 
+        timestamp: Date.now() 
+      }
+    ]);
+  }, [lang]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -37,7 +43,7 @@ const Assistant: React.FC = () => {
 
     try {
       const history = messages.map(m => ({ role: m.role, text: m.text }));
-      const responseText = await sendMessageToGemini(history, userMsg.text);
+      const responseText = await sendMessageToGemini(history, userMsg.text, lang);
       
       const aiMsg: ChatMessage = { role: 'model', text: responseText, timestamp: Date.now() };
       setMessages(prev => [...prev, aiMsg]);
@@ -59,7 +65,6 @@ const Assistant: React.FC = () => {
     <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end font-sans">
       {isOpen && (
         <div className="bg-[#F5F2EB] rounded-none shadow-2xl shadow-[#2C2A26]/10 w-[90vw] sm:w-[380px] h-[550px] mb-6 flex flex-col overflow-hidden border border-[#D6D1C7] animate-slide-up-fade">
-          {/* Header */}
           <div className="bg-[#EBE7DE] p-5 border-b border-[#D6D1C7] flex justify-between items-center">
             <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-[#7895B2] rounded-full animate-pulse"></div>
@@ -72,7 +77,6 @@ const Assistant: React.FC = () => {
             </button>
           </div>
 
-          {/* Chat Area */}
           <div className="flex-1 overflow-y-auto p-6 space-y-8 bg-[#F5F2EB]" ref={scrollRef}>
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -98,7 +102,6 @@ const Assistant: React.FC = () => {
             )}
           </div>
 
-          {/* Input Area */}
           <div className="p-5 bg-[#F5F2EB] border-t border-[#D6D1C7]">
             <div className="flex gap-2 relative">
               <input 
@@ -106,7 +109,7 @@ const Assistant: React.FC = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyPress}
-                placeholder="Diga o que sente..." 
+                placeholder={lang === 'pt' ? 'Diga o que sente...' : (lang === 'en' ? 'Say what you feel...' : (lang === 'es' ? 'Di lo que sientes...' : 'Sagen Sie, was Sie fühlen...'))} 
                 className="flex-1 bg-white border border-[#D6D1C7] focus:border-[#7895B2] px-4 py-3 text-sm outline-none transition-colors placeholder-[#A8A29E] text-[#2C2A26]"
               />
               <button 

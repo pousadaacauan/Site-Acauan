@@ -18,21 +18,19 @@ import ProductDetail from './components/ProductDetail';
 import JournalDetail from './components/JournalDetail';
 import CartDrawer from './components/CartDrawer';
 import Checkout from './components/Checkout';
-import { Product, JournalArticle, ViewState } from './types';
+import GuestArea from './components/GuestArea';
+import { Product, JournalArticle, ViewState, Language } from './types';
 
 function App() {
   const [view, setView] = useState<ViewState>({ type: 'home' });
+  const [lang, setLang] = useState<Language>('pt');
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Handle navigation (clicks on Navbar or Footer links)
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    
-    // If we are not home, go home first
     if (view.type !== 'home') {
       setView({ type: 'home' });
-      // Allow state update to render Home before scrolling
       setTimeout(() => scrollToSection(targetId), 0);
     } else {
       scrollToSection(targetId);
@@ -44,24 +42,12 @@ function App() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
     }
-    
     const element = document.getElementById(targetId);
     if (element) {
-      // Manual scroll calculation to account for fixed header
       const headerOffset = 85;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-
-      try {
-        window.history.pushState(null, '', `#${targetId}`);
-      } catch (err) {
-        // Ignore SecurityError in restricted environments
-      }
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   };
 
@@ -80,7 +66,13 @@ function App() {
     <div className="min-h-screen bg-[#FDFBF7] font-sans text-[#3E3E3E] selection:bg-[#7895B2] selection:text-white">
       {view.type !== 'checkout' && (
         <Navbar 
+            lang={lang}
+            setLang={setLang}
             onNavClick={handleNavClick} 
+            onGuestAreaClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setView({ type: 'guest-area' });
+            }}
             cartCount={cartItems.length}
             onOpenCart={() => setIsCartOpen(true)}
         />
@@ -89,7 +81,7 @@ function App() {
       <main>
         {view.type === 'home' && (
           <>
-            <Hero />
+            <Hero lang={lang} />
             <ProductGrid onProductClick={(p) => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 setView({ type: 'product', product: p });
@@ -127,11 +119,15 @@ function App() {
                 onBack={() => setView({ type: 'home' })}
             />
         )}
+
+        {view.type === 'guest-area' && (
+          <GuestArea lang={lang} onBack={() => setView({ type: 'home' })} />
+        )}
       </main>
 
-      {view.type !== 'checkout' && <Footer onLinkClick={handleNavClick} />}
+      {view.type !== 'checkout' && view.type !== 'guest-area' && <Footer onLinkClick={handleNavClick} />}
       
-      <Assistant />
+      <Assistant lang={lang} />
       
       <CartDrawer 
         isOpen={isCartOpen}

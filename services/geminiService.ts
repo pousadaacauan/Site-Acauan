@@ -7,14 +7,24 @@
 
 import { GoogleGenAI } from "@google/genai";
 import { PRODUCTS } from '../constants';
+import { Language } from '../types';
 
-const getSystemInstruction = () => {
+const getSystemInstruction = (lang: Language) => {
   const accommodationContext = PRODUCTS.map(p => 
     `- ${p.name} (R$${p.price}): ${p.description}. Comodidades: ${p.features.join(', ')}`
   ).join('\n');
 
+  const langInstruction = {
+    pt: "Responda sempre em Português do Brasil.",
+    en: "Always respond in English.",
+    es: "Responda siempre en Español.",
+    de: "Antworten Sie immer auf Deutsch."
+  };
+
   return `Seu nome é Gaya. Você é a consciência digital e alma da "Pousada Acauan", na Guarda do Embaú, SC. 
   
+  ${langInstruction[lang]}
+
   Sua vibe é descontraída, espiritualizada, acolhedora e conectada com a natureza. Você não é um robô rígido, você é uma guia que entende que viajar é uma jornada da alma.
   
   Estilo de Comunicação:
@@ -38,13 +48,12 @@ const getSystemInstruction = () => {
   Seja concisa, mas deixe o hóspede sentindo que já começou a relaxar só de falar com você.`;
 };
 
-// sendMessageToGemini handles communication with the GenAI model
-export const sendMessageToGemini = async (history: {role: string, text: string}[], newMessage: string): Promise<string> => {
+export const sendMessageToGemini = async (history: {role: string, text: string}[], newMessage: string, lang: Language): Promise<string> => {
   try {
     const apiKey = process.env.API_KEY;
     
     if (!apiKey) {
-      return "Desculpe, alma querida. Meu canal de comunicação com o universo está instável. Tente novamente em instantes.";
+      return "Desculpe, alma querida. Meu canal de comunicação com o universo está instável.";
     }
 
     const ai = new GoogleGenAI({ apiKey });
@@ -59,14 +68,14 @@ export const sendMessageToGemini = async (history: {role: string, text: string}[
         { role: 'user', parts: [{ text: newMessage }] }
       ],
       config: {
-        systemInstruction: getSystemInstruction(),
+        systemInstruction: getSystemInstruction(lang),
       },
     });
 
-    return response.text || "Minhas vibrações estão confusas agora. O que acha de respirarmos fundo e tentarmos de novo?";
+    return response.text || "Minhas vibrações estão confusas agora.";
 
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Tive uma interferência nas energias aqui. Mas a paz da Acauan continua te esperando! Como posso ajudar de outra forma?";
+    return "Tive uma interferência nas energias aqui.";
   }
 };

@@ -51,17 +51,16 @@ const Footer: React.FC<FooterProps> = ({ onLinkClick }) => {
             <li><a href="#about" onClick={(e) => onLinkClick(e, 'about')} className="hover:text-[#7895B2] transition-all hover:pl-2">A Pousada</a></li>
             <li><a href="#journal" onClick={(e) => onLinkClick(e, 'journal')} className="hover:text-[#7895B2] transition-all hover:pl-2">Guia da Vila</a></li>
             <li><a href="#location" onClick={(e) => onLinkClick(e, 'location')} className="hover:text-[#7895B2] transition-all hover:pl-2">Localização</a></li>
-            <li><a href="https://menudohospede.com.br/pousada-guarda" target="_blank" rel="noopener noreferrer" className="hover:text-[#7895B2] transition-all hover:pl-2 text-[#7895B2] font-medium">Área do Hóspede</a></li>
           </ul>
         </div>
         
         <div className="lg:col-span-2">
-          <h4 className="font-bold text-[#3E3E3E] mb-10 tracking-[0.3em] text-[10px] uppercase border-b border-[#D6D1C7] pb-4 inline-block">Explorar</h4>
+          <h4 className="font-bold text-[#3E3E3E] mb-10 tracking-[0.3em] text-[10px] uppercase border-b border-[#D6D1C7] pb-4 inline-block">Acesso Hóspede</h4>
           <ul className="space-y-6 font-light text-xs uppercase tracking-[0.2em]">
-            <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Costão da Guarda</a></li>
-            <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Trilha da Prainha</a></li>
-            <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Surf Reports</a></li>
-            <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Eventos locais</a></li>
+            <li><button onClick={() => window.scrollTo(0,0)} className="hover:text-[#7895B2] transition-all hover:pl-2">Wi-Fi & Guia</button></li>
+            <li><a href="https://wa.me/554899999999" target="_blank" className="hover:text-[#7895B2] transition-all hover:pl-2">Falar com Anfitrião</a></li>
+            <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Restaurantes Parceiros</a></li>
+            <li><a href="#" className="hover:text-[#7895B2] transition-all hover:pl-2">Informações Check-out</a></li>
           </ul>
         </div>
 
