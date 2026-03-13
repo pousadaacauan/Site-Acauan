@@ -22,7 +22,7 @@ import GuestArea from './components/GuestArea';
 import { Product, JournalArticle, ViewState, Language } from './types';
 
 // URL do sistema de reservas (QloApps)
-const QLOAPPS_URL = 'https://residencialpousadaacauan.com.br/reservas';
+const QLOAPPS_URL = 'https://reservas.residencialpousadaacauan.com.br';
 
 function App() {
   const [view, setView] = useState<ViewState>({ type: 'home' });
