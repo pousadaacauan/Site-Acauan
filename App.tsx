@@ -21,6 +21,9 @@ import Checkout from './components/Checkout';
 import GuestArea from './components/GuestArea';
 import { Product, JournalArticle, ViewState, Language } from './types';
 
+// URL do sistema de reservas (QloApps)
+const QLOAPPS_URL = 'https://residencialpousadaacauan.com.br/reservas';
+
 function App() {
   const [view, setView] = useState<ViewState>({ type: 'home' });
   const [lang, setLang] = useState<Language>('pt');
@@ -137,8 +140,12 @@ function App() {
         onAddToCart={addToCart}
         onCheckout={() => {
             setIsCartOpen(false);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setView({ type: 'checkout' });
+            // Redireciona para QloApps com os itens selecionados
+            const roomIds = cartItems.map(item => item.id).join(',');
+            const checkoutUrl = roomIds 
+              ? `${QLOAPPS_URL}?rooms=${roomIds}`
+              : QLOAPPS_URL;
+            window.open(checkoutUrl, '_blank');
         }}
       />
     </div>
