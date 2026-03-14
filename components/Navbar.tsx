@@ -104,6 +104,9 @@ const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onNavClick, onGuestAreaC
             <a href="#about" onClick={(e) => { setMobileMenuOpen(false); onNavClick(e, 'about'); }} className="hover:text-[#7895B2]">{t.about}</a>
             <a href="#journal" onClick={(e) => { setMobileMenuOpen(false); onNavClick(e, 'journal'); }} className="hover:text-[#7895B2]">{t.guide}</a>
             <button onClick={() => { setMobileMenuOpen(false); onGuestAreaClick(); }} className="text-[#7895B2]">{t.guestArea} ✨</button>
+            <button onClick={() => { setMobileMenuOpen(false); onOpenCart(); }} className="mt-4 px-8 py-4 bg-[#7895B2] text-white text-sm font-bold uppercase tracking-[0.2em] rounded-lg shadow-lg">
+              {t.reserve} 🏨
+            </button>
           </div>
       </div>
     </>
