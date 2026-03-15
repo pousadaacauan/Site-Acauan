@@ -82,13 +82,9 @@ const CalendarView: React.FC<{ product: Product; onBack: () => void }> = ({ prod
 };
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, items, onRemoveItem, onCheckout, onAddToCart }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('Suíte');
   const [viewingCalendar, setViewingCalendar] = useState<Product | null>(null);
   
-  const categories = ['Suíte', 'Apartamento', 'Bangalô'];
   const total = items.reduce((sum, item) => sum + item.price, 0);
-
-  const filteredProducts = PRODUCTS.filter(p => p.category === activeCategory);
 
   return (
     <>
@@ -134,30 +130,13 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, items, onRemov
             <CalendarView product={viewingCalendar} onBack={() => setViewingCalendar(null)} />
           ) : (
             <div className="space-y-10">
-              {/* Category Selection */}
-              <div>
-                <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8A29E] mb-6">Categorias</span>
-                <div className="flex gap-4 border-b border-[#EBE7DE] pb-4 overflow-x-auto no-scrollbar">
-                  {categories.map(cat => (
-                    <button
-                      key={cat}
-                      onClick={() => setActiveCategory(cat)}
-                      className={`text-[10px] font-bold uppercase tracking-widest whitespace-nowrap px-4 py-2 transition-all ${
-                        activeCategory === cat 
-                          ? 'bg-[#7895B2] text-white shadow-md' 
-                          : 'text-[#A8A29E] hover:text-[#3E3E3E]'
-                      }`}
-                    >
-                      {cat}s
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Apartment List for selected category */}
+              {/* Loft List */}
               <div className="space-y-6">
-                <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8A29E]">Disponíveis para Escolha</span>
-                {filteredProducts.map(product => (
+                <div>
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#A8A29E] mb-2">Nossos Lofts</span>
+                  <p className="text-xs text-[#5D5A53]">Adicional de R$100 por pessoa extra ou criança</p>
+                </div>
+                {PRODUCTS.map(product => (
                   <div key={product.id} className="group border border-[#EBE7DE] bg-white p-4 transition-all hover:border-[#7895B2]/40 hover:shadow-sm">
                     <div className="flex gap-4 mb-4">
                       <div className="w-20 h-20 flex-shrink-0 overflow-hidden">
