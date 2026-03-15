@@ -23,8 +23,8 @@ const ROOMS: RoomType[] = [
   { id: 2, name: 'Loft Horizonte', price: 450, description: 'Amplo, vista panorâmica' },
   { id: 3, name: 'Loft Brisa', price: 400, description: 'Aconchegante, ambiente tranquilo' },
   { id: 4, name: 'Loft Costão', price: 400, description: 'Próximo à natureza' },
-  { id: 5, name: 'Loft Areia', price: 400, description: 'Acolhedor, clima praiano' },
 ];
+// TODO: Criar Loft Areia no admin do QloApps
 // Adicional por pessoa extra ou criança: R$100
 
 const BookingWidget: React.FC<BookingWidgetProps> = ({ isOpen, onClose }) => {
