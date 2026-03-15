@@ -9,70 +9,59 @@ import { Product, JournalArticle } from './types';
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'a1',
-    name: 'Suíte Master Acauan',
-    tagline: 'O ápice do conforto.',
-    description: 'Nossa suíte premium com varanda privativa e vista para o jardim.',
-    longDescription: 'A Suíte Master oferece um ambiente amplo com cama king size, enxoval de alta gramatura e uma decoração que mescla o rústico com o moderno. Ideal para quem busca exclusividade.',
+    id: 'loft-oceano',
+    name: 'Loft Oceano',
+    tagline: 'Vista para o mar.',
+    description: 'Acordar com o som das ondas e a vista do oceano.',
+    longDescription: 'O Loft Oceano oferece a melhor vista da pousada. Amplo, confortável e com decoração praiana. Ideal para casais que buscam romance e tranquilidade.',
     price: 450,
-    category: 'Suíte',
+    category: 'Loft',
     imageUrl: 'https://i.ibb.co/jvDWWRpm/521682003.jpg',
-    features: ['Ar Condicionado', 'Cama King Size', 'Varanda Privativa', 'Café no Quarto']
+    features: ['Vista Mar', 'Ar Condicionado', 'Wi-Fi', 'Cama Queen']
   },
   {
-    id: 'a2',
-    name: 'Apartamento Standard',
-    tagline: 'Simplicidade e aconchego.',
-    description: 'Perfeito para relaxar após um dia inteiro de praia.',
-    longDescription: 'Um espaço otimizado com decoração leve, cama de casal confortável e fácil acesso a todas as áreas comuns da pousada.',
-    price: 320,
-    category: 'Apartamento',
-    imageUrl: 'https://i.ibb.co/C5DT7qm8/515141479.jpg',
-    features: ['Wi-Fi 5G', 'Cama de Casal', 'Frigobar', 'Ducha Aquecida']
-  },
-  {
-    id: 'a3',
-    name: 'Bangalô Família',
-    tagline: 'Para momentos compartilhados.',
-    description: 'Espaço amplo para até 4 pessoas com dois ambientes.',
-    longDescription: 'O Bangalô Família oferece privacidade para os parents e conforto para os filhos, com uma pequena área de estar integrada.',
-    price: 680,
-    category: 'Bangalô',
-    imageUrl: 'https://i.ibb.co/nNDPnYgv/Gemini-Generated-Image-gl8aq7gl8aq7gl8a.png',
-    features: ['2 Ambientes', 'Acomoda 4 pessoas', 'Copa de Apoio', 'Pet Friendly']
-  },
-  {
-    id: 'a4',
-    name: 'Suíte Vista Mar',
-    tagline: 'Acorde com o horizonte.',
-    description: 'Localizada no ponto mais alto, com brisa constante.',
-    longDescription: 'Uma suíte romântica desenhada para casais, com janelas amplas que permitem a entrada da luz natural e o som constante do mar.',
-    price: 520,
-    category: 'Suíte',
+    id: 'loft-horizonte',
+    name: 'Loft Horizonte',
+    tagline: 'Amplo e panorâmico.',
+    description: 'Espaço generoso com vista privilegiada do horizonte.',
+    longDescription: 'O Loft Horizonte combina amplitude com conforto. Grandes janelas permitem entrada de luz natural e ventilação da brisa do mar.',
+    price: 450,
+    category: 'Loft',
     imageUrl: 'https://i.ibb.co/qLn5pRbq/521682605.jpg',
-    features: ['Vista Mar', 'Rede na Varanda', 'Decoração Praiana', 'Smart TV']
+    features: ['Vista Panorâmica', 'Ar Condicionado', 'Wi-Fi', 'Varanda']
   },
   {
-    id: 'a5',
-    name: 'Estúdio Caiçara',
-    tagline: 'Alma local.',
-    description: 'Decoração inspirada na cultura dos pescadores da Guarda.',
-    longDescription: 'Um estúdio charmoso com artesanato local, móveis de madeira de demolição e uma atmosfera autêntica da vila.',
-    price: 380,
-    category: 'Apartamento',
-    imageUrl: 'https://i.ibb.co/jPMQpGKW/Gemini-Generated-Image-t83bh6t83bh6t83b.png',
-    features: ['Artesanato Local', 'Cozinha Básica', 'Ventilação Natural', 'Wi-Fi']
+    id: 'loft-brisa',
+    name: 'Loft Brisa',
+    tagline: 'Aconchego e tranquilidade.',
+    description: 'Um refúgio acolhedor para descansar.',
+    longDescription: 'O Loft Brisa oferece um ambiente tranquilo e aconchegante. Decoração suave e conforto para você relaxar após um dia de praia.',
+    price: 400,
+    category: 'Loft',
+    imageUrl: 'https://i.ibb.co/C5DT7qm8/515141479.jpg',
+    features: ['Ambiente Tranquilo', 'Ar Condicionado', 'Wi-Fi', 'Frigobar']
   },
   {
-    id: 'a6',
-    name: 'Loft do Costão',
-    tagline: 'Design e Natureza.',
-    description: 'Modernidade integrada ao ambiente de preservação.',
-    longDescription: 'Para quem busca um design contemporâneo sem abrir mão do contato com a natureza da Guarda do Embaú.',
-    price: 590,
-    category: 'Bangalô',
+    id: 'loft-costao',
+    name: 'Loft Costão',
+    tagline: 'Próximo à natureza.',
+    description: 'Integrado ao ambiente natural da Guarda.',
+    longDescription: 'O Loft Costão fica em uma posição privilegiada, próximo à vegetação nativa. Perfeito para quem ama a natureza e busca conexão com o ambiente.',
+    price: 400,
+    category: 'Loft',
     imageUrl: 'https://i.ibb.co/CKVs70Wn/Gemini-Generated-Image-8115v18115v18115.png',
-    features: ['Design Moderno', 'Banheiro Panorâmico', 'Ar Condicionado', 'Frigobar Gourmet']
+    features: ['Contato com Natureza', 'Ar Condicionado', 'Wi-Fi', 'Varanda']
+  },
+  {
+    id: 'loft-areia',
+    name: 'Loft Areia',
+    tagline: 'Clima praiano.',
+    description: 'Acolhedor e com a essência da praia.',
+    longDescription: 'O Loft Areia traz toda a essência da Guarda do Embaú para dentro do seu quarto. Decoração praiana e ambiente acolhedor.',
+    price: 400,
+    category: 'Loft',
+    imageUrl: 'https://i.ibb.co/jPMQpGKW/Gemini-Generated-Image-t83bh6t83bh6t83b.png',
+    features: ['Decoração Praiana', 'Ar Condicionado', 'Wi-Fi', 'Frigobar']
   }
 ];
 
