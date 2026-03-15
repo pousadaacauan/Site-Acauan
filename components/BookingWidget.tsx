@@ -19,11 +19,13 @@ interface RoomType {
 }
 
 const ROOMS: RoomType[] = [
-  { id: 1, name: 'Quarto Casal Padrão', price: 350, description: 'Cama casal, ar-condicionado, Wi-Fi' },
-  { id: 2, name: 'Quarto Família', price: 450, description: 'Cama casal + beliche, varanda' },
-  { id: 3, name: 'Suíte Master', price: 550, description: 'Vista mar, hidromassagem' },
-  { id: 4, name: 'Chalé Romântico', price: 650, description: 'Isolado, lareira, deck privativo' },
+  { id: 1, name: 'Loft Oceano', price: 450, description: 'Vista para o mar, conforto total' },
+  { id: 2, name: 'Loft Horizonte', price: 450, description: 'Amplo, vista panorâmica' },
+  { id: 3, name: 'Loft Brisa', price: 400, description: 'Aconchegante, ambiente tranquilo' },
+  { id: 4, name: 'Loft Costão', price: 400, description: 'Próximo à natureza' },
+  { id: 5, name: 'Loft Areia', price: 400, description: 'Acolhedor, clima praiano' },
 ];
+// Adicional por pessoa extra ou criança: R$100
 
 const BookingWidget: React.FC<BookingWidgetProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState<'dates' | 'rooms' | 'guest' | 'processing'>('dates');
